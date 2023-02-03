@@ -1,7 +1,7 @@
 interface Props {
   params: {
-    slug: string
-  }
+    slug: string;
+  };
 }
 
 export default function Post(props: Props) {
@@ -10,5 +10,5 @@ export default function Post(props: Props) {
       <h1>記事</h1>
       <p>id: {props.params.slug}</p>
     </>
-  )
+  );
 }
