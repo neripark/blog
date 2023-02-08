@@ -18,3 +18,15 @@ export const getPosts = async () => {
   });
   return items;
 };
+
+export const getPostBySlug = async (slug: string) => {
+  const article = await client.getFirstContent<Post>({
+    appUid: "blog2",
+    modelUid: "post",
+    query: {
+      slug,
+      select: ["_id", "title", "slug", "body"],
+    },
+  });
+  return article;
+};
