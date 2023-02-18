@@ -1,4 +1,5 @@
 import { getPostBySlug } from "@/lib/newt";
+import Link from "next/link";
 import styles from "./page.module.css";
 
 interface Props {
@@ -35,6 +36,7 @@ export default async function Post(props: Props) {
           <div dangerouslySetInnerHTML={{ __html: post.body }} />
         </>
       )}
+      <Link href="/">トップへ</Link>
     </main>
   );
 }
