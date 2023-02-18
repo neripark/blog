@@ -10,6 +10,7 @@ export default async function Home() {
   return (
     <main className={styles.container}>
       <h1>neriparkのブログ</h1>
+      <p>個人的な、でも人に見られることでなにか生まれることを期待するメモ書き</p>
       <ul>
         {posts.map((article) => {
           return (
