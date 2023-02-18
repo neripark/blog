@@ -1,4 +1,6 @@
 import { getPostBySlug } from "@/lib/newt";
+import Link from "next/link";
+import styles from "./page.module.css";
 
 interface Props {
   params: {
@@ -22,13 +24,19 @@ interface Props {
 
 export default async function Post(props: Props) {
   const post = await getPostBySlug(props.params.slug);
-  // todo: getStaticPaths で `paths` に返されたページをすべて事前生成しており、
-  // fallback で404を返せるのであればこの if 文は消したい。方法を調べる
-  if (post === null) return <p>記事は存在しません。</p>;
   return (
-    <main>
-      <h1>{post.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: post.body }} />
+    <main className={styles.container}>
+      {/* todo: getStaticPaths で `paths` に返されたページをすべて事前生成しており、
+          fallback で404を返せるのであればこの if 文は消したい。方法を調べる */}
+      {post === null ? (
+        <p>記事は存在しません。</p>
+      ) : (
+        <>
+          <h1>{post.title}</h1>
+          <div dangerouslySetInnerHTML={{ __html: post.body }} />
+        </>
+      )}
+      <Link href="/">トップへ</Link>
     </main>
   );
 }
